@@ -16,6 +16,9 @@ module NavigationHelpers
     when /^the home\s?page$/
       '/movies'
 
+    when /^the RottenPotatoes home\s?page$/
+      '/movies'
+
     when /^the edit page for "Alien"$/
       begin
         movie = Movie.find_by_title("Alien")

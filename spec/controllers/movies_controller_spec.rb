@@ -16,6 +16,14 @@ describe MoviesController do
     end
   end
 
+  describe 'create new movie' do
+    it 'should post to create page' do
+      Movie.stub(:create!).and_return(@movie)
+      post :create, :movie => {}
+      response.should redirect_to(movies_path)
+    end
+  end
+
   describe 'find movies with same director' do
     it 'should go to show movies with same director action' do
       post :same_director, { :id => @movie.id }
