@@ -13,4 +13,18 @@ describe Movie do
       assert Movie.find_with_same_director('Known') == [mm], "Movie list for known director is not correct"
     end
   end
+
+  describe 'movie has director field' do
+    before :each do
+      @real_movie = Movie.create!(:title => 'RSpec Test Dummy Movie')
+    end
+
+    it 'should create a movie and check that director field exists' do
+      assert @real_movie.respond_to?(:director), "Director field does not exist"
+    end
+
+    after :each do
+      Movie.destroy(@real_movie.id)
+    end
+  end
 end
